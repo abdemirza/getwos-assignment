@@ -24,7 +24,7 @@ export default function StorageAccess() {
 
   return (
     <View>
-      <Text>StorageAccess</Text>
+      <Text>StorageAccessss</Text>
     </View>
   );
 }
