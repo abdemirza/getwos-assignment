@@ -1,16 +1,17 @@
-import { View, Text } from 'react-native'
-import React from 'react'
-import StorageAccess from './src/components/StorageAccess'
-import Cast from './src/components/Cast';
+import React from 'react';
 import HomeScreen from './src/screens/HomeScreen';
-import { Provider } from 'react-redux';
-import { store } from './src/state/store';
-
+import {Provider} from 'react-redux';
+import {NavigationContainer} from '@react-navigation/native';
+import {store} from './src/state/store';
+import StackNavigator from './src/navigation/StackNavigator';
+import { LogBox } from 'react-native';
 export default function App() {
+  LogBox.ignoreLogs(['new NativeEventEmitter']);
   return (
-    <Provider store={store}>
-
-      <HomeScreen />
-    </Provider>
-  )
+    <NavigationContainer>
+      <Provider store={store}>
+        <StackNavigator />
+      </Provider>
+    </NavigationContainer>
+  );
 }

@@ -2,8 +2,11 @@ import {View, Text} from 'react-native';
 import React from 'react';
 import { mediaJSON } from '../data/dummyData';
 import Track from './Track';
+import { useRemoteMediaClient } from 'react-native-google-cast';
 
 export default function Tracks() {
+  const client = useRemoteMediaClient();
+
   const tracks = mediaJSON.map((track, index) => {
     return (
       <Track

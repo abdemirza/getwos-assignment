@@ -7,8 +7,15 @@ import Icon from 'react-native-vector-icons/Entypo';
 import {useDispatch} from 'react-redux';
 import {trackActionCreators} from '../state';
 import {bindActionCreators} from 'redux';
+import GoogleCast, {
+  CastButton,
+  useRemoteMediaClient,
+  
+} from 'react-native-google-cast';
+import { useNavigation } from '@react-navigation/native';
 
 export default function Track(props) {
+  const client = useRemoteMediaClient();
   const {
     title = 'Heat Waves',
     trackSubtitle = 'Glass Animals',
@@ -19,8 +26,11 @@ export default function Track(props) {
   } = props;
   const dispatch = useDispatch();
   const {trackAction} = bindActionCreators(trackActionCreators, dispatch);
+  const navigation = useNavigation();
+ 
   const onPressHandler = () => {
     trackAction({trackUrl,trackId,thumb,trackTitle:title,trackSubtitle});
+    navigation.navigate('Player');
   };
   return (
     <Pressable onPress={() => onPressHandler()} style={styles.container}>

@@ -8,7 +8,6 @@ export default function HomeScreen() {
   const {trackUrl, trackId, thumb, trackTitle} = useSelector(
     state => state.track,
   );
-  console.log('track title', trackTitle);
   return (
     <View style={{flex: 1}}>
       <Header />
