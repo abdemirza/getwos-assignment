@@ -1,4 +1,3 @@
-import BigBuck from '../assets/images/BigBuck.png';
 
 export const mediaJSON = 
   [

@@ -1,6 +1,5 @@
 import {
   View,
-  Text,
   StyleSheet,
   Image,
   Pressable,
@@ -10,8 +9,6 @@ import React from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import MyAppText from '../components/MyAppText';
 import {
-  GREY,
-  OFF_BLACK,
   WHITE,
   BLACK,
   GREY_SECONDARY,
@@ -19,12 +16,13 @@ import {
 import {FONT_SIZE_XXLARGE} from '../constants/fontSize';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {mediaJSON} from '../data/dummyData';
-import GoogleCast, {
+import {
   useRemoteMediaClient,
   useStreamPosition,
 } from 'react-native-google-cast';
 import {trackActionCreators} from '../state';
 import {bindActionCreators} from 'redux';
+import SongSlider from '../components/SongSlider';
 
 export default function MediaPlayer() {
   const client = useRemoteMediaClient();
@@ -45,6 +43,8 @@ export default function MediaPlayer() {
       setPlay(!play);
     }
   };
+
+  
   console.log(typeof streamPosition)
   console.log(streamPosition)
   const previousHandler = () => {
@@ -109,6 +109,7 @@ export default function MediaPlayer() {
         <MyAppText style={styles.heading}>{trackTitle}</MyAppText>
         <MyAppText style={styles.subHeading}>{trackSubtitle}</MyAppText>
       </View>
+      <SongSlider />
       <View style={styles.controlsContainer}>
         <Pressable onPress={() => previousHandler()}>
           <Icon name="skip-previous" size={35} color={WHITE} />
@@ -118,7 +119,6 @@ export default function MediaPlayer() {
             {!play && streamPosition!=null && (
               <Icon name="play" size={45} color={WHITE} />
             )}
-
             {play && typeof streamPosition!='object' && (
               <Icon name="pause" size={45} color={WHITE} />
             )}
