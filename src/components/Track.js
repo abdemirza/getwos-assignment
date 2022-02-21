@@ -30,6 +30,8 @@ export default function Track(props) {
  
   const onPressHandler = () => {
     trackAction({trackUrl,trackId,thumb,trackTitle:title,trackSubtitle});
+    if(!client)
+    return alert('Please connect to a Chromecast device');
     navigation.navigate('Player');
   };
   return (
